@@ -9,19 +9,11 @@ from LinkedList import LinkedList
 
 def search(lst, value):
     
-    if not lst.head_node:
-        return False
-    else:
-        current = lst.head_node
+    current = lst.get_head()
 
+    while current:
         if current.data == value:
             return True
-        
-        while current:
-
-            if current.data == value:
-                return True
-
-            current = current.next_element
-        
-        return False
+        current = current.next_element
+    
+    return False
