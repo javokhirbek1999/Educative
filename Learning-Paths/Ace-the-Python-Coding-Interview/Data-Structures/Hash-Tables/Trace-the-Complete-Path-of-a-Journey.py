@@ -1,3 +1,42 @@
+
+"""
+1st approach: using two pointers
+2nd approach: using dictionary
+"""
+
+""" Using Dictionary """
+def trace_path(my_dict):  # A Map object
+    
+    res = []
+
+    reverse_dict = dict()
+
+    for key in my_dict.keys():
+        reverse_dict[my_dict.get(key)] = key
+
+
+    from_ = None
+
+    for key in my_dict.keys():
+        if key not in reverse_dict:
+            from_ = key
+            break
+
+    to = my_dict.get(from_)
+
+    while to:
+
+        res.append([from_, to])
+        from_ = to
+        if to not in my_dict:
+            return res
+        to = my_dict.get(to)
+
+    return res 
+
+
+
+""" Two Pointers  Approach """
 def trace_path(my_dict):  
     routes = []
 
