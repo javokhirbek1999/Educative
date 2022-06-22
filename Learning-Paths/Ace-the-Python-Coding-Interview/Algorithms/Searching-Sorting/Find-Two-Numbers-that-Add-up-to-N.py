@@ -26,6 +26,8 @@ def find_sum(lst, n):
     :param lst: A list of integers
     :param n: The integer number n
     """
+    
+    lst.sort()
 
     for num in lst:
         index = binary_search(lst, n-num)
@@ -33,3 +35,50 @@ def find_sum(lst, n):
             return [num, n-num]
     
     return None
+
+
+
+"""
+Time: O(n)
+Space: O(n)
+"""
+
+def find_sum(lst, n):
+    """
+    Function to find two number that add up to n
+    :param lst: A list of integers
+    :param n: The integer number n
+    """
+
+    d = {n-num:num for num in lst}
+
+    for i in lst:
+        if i in d:
+            return [i, d[i]]
+    
+    return None
+
+
+"""
+Using set() function
+
+Time: O(n)
+Space: O(n)
+"""
+
+def find_sum(lst, n):
+    """
+    Function to find two number that add up to n
+    :param lst: A list of integers
+    :param n: The integer number n
+    """
+
+    d = set()
+
+    for i in lst:
+        if n-i in d:
+            return [i, n-i]
+        d.add(i)
+    
+    return None
+
