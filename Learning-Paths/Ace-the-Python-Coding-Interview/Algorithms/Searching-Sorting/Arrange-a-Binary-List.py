@@ -1,6 +1,31 @@
 """
-Sorting with merge sort
+Swapping 1s
 
+Time: O(n)
+Space: O(1)
+"""
+def sort_binary_list(lst):
+    """
+    A function to sort binary list
+    :param lst: A list containing binary numbers
+    :return: A sorted binary list
+    """
+
+    j = 0
+
+    for i in range(len(lst)):
+        if lst[i] == 0:
+            lst[i], lst[j] = lst[j], lst[i]
+            j += 1
+    
+    return lst
+
+
+
+"""
+Sorting
+
+Algorithms: Merge Sort
 Time: O(n log n)
 Space: O(n)
 """
