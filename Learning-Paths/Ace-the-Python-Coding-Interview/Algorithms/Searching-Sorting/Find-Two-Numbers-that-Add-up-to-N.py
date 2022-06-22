@@ -1,3 +1,7 @@
+"""
+Time: O(n log n)
+Space: O(1)
+"""
 def binary_search(lst, target):
     low = 0
     high = len(lst)-1
