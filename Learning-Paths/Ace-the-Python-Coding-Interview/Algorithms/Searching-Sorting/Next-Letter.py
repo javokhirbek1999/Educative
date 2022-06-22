@@ -1,3 +1,14 @@
+"""
+Approach: Modified Binary Search
+
+Time: O(log n)
+Space: O(1)
+
+instead of returning the value at index start or mid, we will return at index 'start % n' 
+which will return the first element if the key is the last element
+
+"""
+
 def search_next_letter(letters, key):
 
   n = len(letters)
