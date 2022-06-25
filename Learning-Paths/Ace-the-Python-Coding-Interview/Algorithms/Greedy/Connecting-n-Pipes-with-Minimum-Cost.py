@@ -1,7 +1,10 @@
 """
 Time: O(n log n)
-Space: O(1)
+Space: O(n)
 """
+
+import heapq
+
 def min_cost(pipes):
     """
     Calculates the minimum cost of connecting pipes
@@ -9,16 +12,17 @@ def min_cost(pipes):
     :return: The minimum cost
     """
 
-    total_cost = 0
-    current_length = 0
+    heapq.heapify(pipes)
 
-    pipes.sort()
+    cost = 0
 
-    current_length = pipes[0]+pipes[1]
-    total_cost = current_length
+    while len(pipes) > 1:
 
-    for pipe in pipes[2:]:
-        current_length += pipe
-        total_cost += current_length
-    
-    return total_cost
+        first = heapq.heappop(pipes)
+        second = heapq.heappop(pipes)
+
+        cost += first + second
+
+        heapq.heappush(pipes, first+second)
+
+    return cost 
