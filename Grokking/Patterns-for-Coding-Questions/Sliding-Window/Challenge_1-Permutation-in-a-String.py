@@ -2,7 +2,7 @@
 n = len(s1)
 m = len(s2)
 
-Time: O(n)
+Time: O(n + m)
 Space: O(m)
 """
 
