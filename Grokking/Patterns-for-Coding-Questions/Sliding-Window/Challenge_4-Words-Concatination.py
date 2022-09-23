@@ -3,7 +3,7 @@ N = # of characters
 M = # of words
 Len = size of each word
 
-Time: O(N + M * Len)
+Time: O(N * M * Len)
 """
 
 def find_word_concatenation(str1, words):
