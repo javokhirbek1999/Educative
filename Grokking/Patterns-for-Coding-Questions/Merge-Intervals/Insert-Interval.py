@@ -1,32 +1,35 @@
 """
-Time: O(n log n)
+Time: O(n)
 Space: O(n)
 """
-from typing import List
 
+def insert(intervals, new_interval):
+  
+  merged = []
+  
+  n = len(intervals)
 
-def insert(intervals: List[List[int]], new_interval: List[int]):
+  i = 0
 
-    merged = []
+  # Skip (include in output) all the intervals that start before newInterval
+  while i < n and intervals[i][1] < new_interval[0]:
+    merged.append(intervals[i])
+    i += 1
 
-    intervals.append(new_interval)
+  # Merge all the intervals that newInterval overlaps
+  while i < n and new_interval[1] >= intervals[i][0]:
+    new_interval[0] = min(new_interval[0], intervals[i][0])
+    new_interval[1] = max(new_interval[1], intervals[i][1])
+    i += 1
+  
+  # Append the merged interval
+  merged.append(new_interval)
 
-    intervals.sort(key=lambda x:x[0])
+  # Include the rest of the intervals that start after newInterval ends
+  while i < n:
+    merged.append(intervals[i])
+    i += 1
 
-    start, end = intervals[0]
-    
-    for i in range(1, len(intervals)):
+  return merged
 
-        currentStart, currentEnd = intervals[i]
-
-        if currentStart < end:
-            end = max(end, currentEnd)
-        else:
-            merged.append([start, end])
-            start = currentStart
-            end = currentEnd
-    
-    merged.append([start, end])
-
-    return merged
 
